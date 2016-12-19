@@ -1,0 +1,46 @@
+
+{
+	"buildFiles" : [ "/Users/skonb/OpenH264CameraView/app/CMakeLists.txt" ],
+	"cleanCommands" : 
+	[
+		"/Users/skonb/AndroidSDK/cmake/3.6.3155560/bin/cmake --build /Users/skonb/OpenH264CameraView/app/.externalNativeBuild/cmake/debug/armeabi --target clean"
+	],
+	"cppFileExtensions" : [ "cpp" ],
+	"libraries" : 
+	{
+		"libopenh264-Debug-armeabi" : 
+		{
+			"abi" : "armeabi",
+			"artifactName" : "libopenh264",
+			"buildType" : "debug",
+			"output" : "/Users/skonb/OpenH264CameraView/app/../openh264/lib/armeabi/libopenh264.so",
+			"toolchain" : "11574389739953275151"
+		},
+		"native-lib-Debug-armeabi" : 
+		{
+			"abi" : "armeabi",
+			"artifactName" : "native-lib",
+			"buildCommand" : "/Users/skonb/AndroidSDK/cmake/3.6.3155560/bin/cmake --build /Users/skonb/OpenH264CameraView/app/.externalNativeBuild/cmake/debug/armeabi --target native-lib",
+			"buildType" : "debug",
+			"files" : 
+			[
+				
+				{
+					"flags" : "  -target armv5te-none-linux-androideabi -gcc-toolchain /Users/skonb/AndroidSDK/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/skonb/AndroidSDK/ndk-bundle/platforms/android-16/arch-arm  -Dnative_lib_EXPORTS -I../../../../../openh264/include -isystem /Users/skonb/AndroidSDK/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/include -isystem /Users/skonb/AndroidSDK/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/libs/armeabi/include -isystem /Users/skonb/AndroidSDK/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/include/backward  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv5te -mtune=xscale -msoft-float -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -fno-exceptions -fno-rtti -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv5te -mtune=xscale -msoft-float -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -fno-exceptions -fno-rtti -std=c++11 -frtti -fexceptions -O0 -fno-limit-debug-info -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "/Users/skonb/OpenH264CameraView/app/src/main/cpp/native-lib.cpp",
+					"workingDirectory" : "/Users/skonb/OpenH264CameraView/app/.externalNativeBuild/cmake/debug/armeabi"
+				}
+			],
+			"output" : "/Users/skonb/OpenH264CameraView/app/build/intermediates/cmake/debug/obj/armeabi/libnative-lib.so",
+			"toolchain" : "11574389739953275151"
+		}
+	},
+	"toolchains" : 
+	{
+		"11574389739953275151" : 
+		{
+			"cCompilerExecutable" : "/Users/skonb/AndroidSDK/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang",
+			"cppCompilerExecutable" : "/Users/skonb/AndroidSDK/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++"
+		}
+	}
+}
