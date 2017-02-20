@@ -1,3 +1,6 @@
 /Users/skonb/OpenH264CameraView/app/.externalNativeBuild/cmake/debug/armeabi/CMakeFiles/edit_cache.dir
 /Users/skonb/OpenH264CameraView/app/.externalNativeBuild/cmake/debug/armeabi/CMakeFiles/rebuild_cache.dir
 /Users/skonb/OpenH264CameraView/app/.externalNativeBuild/cmake/debug/armeabi/CMakeFiles/native-lib.dir
+/Users/skonb/OpenH264CameraView/app/.externalNativeBuild/cmake/debug/armeabi/src/main/cpp/android_aac_enc/CMakeFiles/edit_cache.dir
+/Users/skonb/OpenH264CameraView/app/.externalNativeBuild/cmake/debug/armeabi/src/main/cpp/android_aac_enc/CMakeFiles/rebuild_cache.dir
+/Users/skonb/OpenH264CameraView/app/.externalNativeBuild/cmake/debug/armeabi/src/main/cpp/android_aac_enc/CMakeFiles/aac_enc.dir

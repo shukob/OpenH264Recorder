@@ -14,16 +14,20 @@ add_library(libopenh264 SHARED IMPORTED)
 set_target_properties(libopenh264 PROPERTIES IMPORTED_LOCATION
     ${openh264_DIR}/lib/${ANDROID_ABI}/libopenh264.so)
 
-add_library( # Sets the name of the library.
-             native-lib
+add_subdirectory(${CMAKE_SOURCE_DIR}/src/main/cpp/android_aac_enc)
 
-             # Sets the library as a shared library.
-             SHARED
+add_library( # Sets the name of the library.
+
 
              # Provides a relative path to your source file(s).
              # Associated headers in the same location as their source
              # file are automatically included.
-             src/main/cpp/native-lib.cpp )
+
+             native-lib
+             SHARED
+             src/main/cpp/exports.cpp
+             src/main/cpp/aac-enc.c
+             )
 
 # Searches for a specified prebuilt library and stores the path as a
 # variable. Because system libraries are included in the search path by
@@ -34,7 +38,7 @@ add_library( # Sets the name of the library.
 find_library( # Sets the name of the path variable.
               log-lib
 
-              # Specifies the name of the NDK library that
+                # Specifies the name of the NDK library that
               # you want CMake to locate.
               log )
 
@@ -43,11 +47,15 @@ find_library( # Sets the name of the path variable.
 # build script, prebuilt third-party libraries, or system libraries.
 
 target_include_directories(native-lib PRIVATE
-                           ${openh264_DIR}/include)
+                           ${openh264_DIR}/include
+                           src/main/cpp/android_aac_enc)
 
 target_link_libraries( # Specifies the target library.
                        native-lib
                        libopenh264
+                       aac_enc
                        # Links the target library to the log library
                        # included in the NDK.
                        ${log-lib} )
+
+SET( CMAKE_EXE_LINKER FLAGS "-Wl,--build-id ${CMAKE_EXE_LINKER_FLAGS}")

@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">OpenH264CameraView</string>
+    <!--dialog labels-->
+    <string name="no_network">インターネットに接続できません</string>
+    <string name="choose_video_picker">動画を引用するアプリを選択</string>
+    <string name="choose_photo_picker">写真を選択するアプリを選択</string>
+    <string name="choose_email_client">メールを送るアプリを選択</string>
+    <string name="select_dialog_title_format" formatted="false">%sを選択して下さい</string>
+    <string name="input_dialog_title_format" formatted="false">%sを入力して下さい</string>
+    <string name="cannot_get_writable_location">動画の書き込み可能な領域を見つけられませんでした</string>
+
+    <!--general buttons-->
+    <string name="yes">はい</string>
+    <string name="no">いいえ</string>
+    <string name="cancel">キャンセル</string>
+    <string name="ok">Ok</string>
 </resources>

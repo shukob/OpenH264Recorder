@@ -183,11 +183,20 @@ Project_BINARY_DIR:STATIC=/Users/skonb/OpenH264CameraView/app/.externalNativeBui
 //Value Computed by CMake
 Project_SOURCE_DIR:STATIC=/Users/skonb/OpenH264CameraView/app
 
+//Value Computed by CMake
+aac_enc_BINARY_DIR:STATIC=/Users/skonb/OpenH264CameraView/app/.externalNativeBuild/cmake/debug/arm64-v8a/src/main/cpp/android_aac_enc
+
+//Dependencies for target
+aac_enc_LIB_DEPENDS:STATIC=
+
+//Value Computed by CMake
+aac_enc_SOURCE_DIR:STATIC=/Users/skonb/OpenH264CameraView/app/src/main/cpp/android_aac_enc
+
 //Path to a library.
 log-lib:FILEPATH=/Users/skonb/AndroidSDK/ndk-bundle/platforms/android-21/arch-arm64/usr/lib/liblog.so
 
 //Dependencies for the target
-native-lib_LIB_DEPENDS:STATIC=general;libopenh264;general;/Users/skonb/AndroidSDK/ndk-bundle/platforms/android-21/arch-arm64/usr/lib/liblog.so;
+native-lib_LIB_DEPENDS:STATIC=general;libopenh264;general;aac_enc;general;/Users/skonb/AndroidSDK/ndk-bundle/platforms/android-21/arch-arm64/usr/lib/liblog.so;
 
 
 ########################
@@ -274,7 +283,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=1
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=2
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

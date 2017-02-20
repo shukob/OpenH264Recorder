@@ -1,6 +1,11 @@
 
 {
-	"buildFiles" : [ "/Users/skonb/OpenH264CameraView/app/CMakeLists.txt" ],
+	"buildFiles" : 
+	[
+		"/Users/skonb/OpenH264CameraView/app/CMakeLists.txt",
+		"/Users/skonb/OpenH264CameraView/app/src/main/cpp/android_aac_enc/CMakeLists.txt"
+	],
+	"cFileExtensions" : [ "c" ],
 	"cleanCommands" : 
 	[
 		"/Users/skonb/AndroidSDK/cmake/3.6.3155560/bin/cmake --build /Users/skonb/OpenH264CameraView/app/.externalNativeBuild/cmake/release/armeabi-v7a --target clean"
@@ -8,6 +13,192 @@
 	"cppFileExtensions" : [ "cpp" ],
 	"libraries" : 
 	{
+		"aac_enc-Release-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "aac_enc",
+			"buildCommand" : "/Users/skonb/AndroidSDK/cmake/3.6.3155560/bin/cmake --build /Users/skonb/OpenH264CameraView/app/.externalNativeBuild/cmake/release/armeabi-v7a --target aac_enc",
+			"buildType" : "release",
+			"files" : 
+			[
+				
+				{
+					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain /Users/skonb/AndroidSDK/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/skonb/AndroidSDK/ndk-bundle/platforms/android-16/arch-arm -Daac_enc_EXPORTS -I../../../../src/main/cpp/android_aac_enc/src -I../../../../src/main/cpp/android_aac_enc/basic_op -I../../../../src/main/cpp/android_aac_enc/inc  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -Os -DNDEBUG -Os -DNDEBUG  -fPIC      -c ",
+					"src" : "/Users/skonb/OpenH264CameraView/app/src/main/cpp/android_aac_enc/basic_op/basicop2.c",
+					"workingDirectory" : "/Users/skonb/OpenH264CameraView/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain /Users/skonb/AndroidSDK/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/skonb/AndroidSDK/ndk-bundle/platforms/android-16/arch-arm -Daac_enc_EXPORTS -I../../../../src/main/cpp/android_aac_enc/src -I../../../../src/main/cpp/android_aac_enc/basic_op -I../../../../src/main/cpp/android_aac_enc/inc  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -Os -DNDEBUG -Os -DNDEBUG  -fPIC      -c ",
+					"src" : "/Users/skonb/OpenH264CameraView/app/src/main/cpp/android_aac_enc/basic_op/oper_32b.c",
+					"workingDirectory" : "/Users/skonb/OpenH264CameraView/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain /Users/skonb/AndroidSDK/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/skonb/AndroidSDK/ndk-bundle/platforms/android-16/arch-arm -Daac_enc_EXPORTS -I../../../../src/main/cpp/android_aac_enc/src -I../../../../src/main/cpp/android_aac_enc/basic_op -I../../../../src/main/cpp/android_aac_enc/inc  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -Os -DNDEBUG -Os -DNDEBUG  -fPIC      -c ",
+					"src" : "/Users/skonb/OpenH264CameraView/app/src/main/cpp/android_aac_enc/src/cmnMemory.c",
+					"workingDirectory" : "/Users/skonb/OpenH264CameraView/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain /Users/skonb/AndroidSDK/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/skonb/AndroidSDK/ndk-bundle/platforms/android-16/arch-arm -Daac_enc_EXPORTS -I../../../../src/main/cpp/android_aac_enc/src -I../../../../src/main/cpp/android_aac_enc/basic_op -I../../../../src/main/cpp/android_aac_enc/inc  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -Os -DNDEBUG -Os -DNDEBUG  -fPIC      -c ",
+					"src" : "/Users/skonb/OpenH264CameraView/app/src/main/cpp/android_aac_enc/src/aac_rom.c",
+					"workingDirectory" : "/Users/skonb/OpenH264CameraView/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain /Users/skonb/AndroidSDK/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/skonb/AndroidSDK/ndk-bundle/platforms/android-16/arch-arm -Daac_enc_EXPORTS -I../../../../src/main/cpp/android_aac_enc/src -I../../../../src/main/cpp/android_aac_enc/basic_op -I../../../../src/main/cpp/android_aac_enc/inc  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -Os -DNDEBUG -Os -DNDEBUG  -fPIC      -c ",
+					"src" : "/Users/skonb/OpenH264CameraView/app/src/main/cpp/android_aac_enc/src/aacenc.c",
+					"workingDirectory" : "/Users/skonb/OpenH264CameraView/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain /Users/skonb/AndroidSDK/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/skonb/AndroidSDK/ndk-bundle/platforms/android-16/arch-arm -Daac_enc_EXPORTS -I../../../../src/main/cpp/android_aac_enc/src -I../../../../src/main/cpp/android_aac_enc/basic_op -I../../../../src/main/cpp/android_aac_enc/inc  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -Os -DNDEBUG -Os -DNDEBUG  -fPIC      -c ",
+					"src" : "/Users/skonb/OpenH264CameraView/app/src/main/cpp/android_aac_enc/src/aacenc_core.c",
+					"workingDirectory" : "/Users/skonb/OpenH264CameraView/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain /Users/skonb/AndroidSDK/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/skonb/AndroidSDK/ndk-bundle/platforms/android-16/arch-arm -Daac_enc_EXPORTS -I../../../../src/main/cpp/android_aac_enc/src -I../../../../src/main/cpp/android_aac_enc/basic_op -I../../../../src/main/cpp/android_aac_enc/inc  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -Os -DNDEBUG -Os -DNDEBUG  -fPIC      -c ",
+					"src" : "/Users/skonb/OpenH264CameraView/app/src/main/cpp/android_aac_enc/src/adj_thr.c",
+					"workingDirectory" : "/Users/skonb/OpenH264CameraView/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain /Users/skonb/AndroidSDK/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/skonb/AndroidSDK/ndk-bundle/platforms/android-16/arch-arm -Daac_enc_EXPORTS -I../../../../src/main/cpp/android_aac_enc/src -I../../../../src/main/cpp/android_aac_enc/basic_op -I../../../../src/main/cpp/android_aac_enc/inc  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -Os -DNDEBUG -Os -DNDEBUG  -fPIC      -c ",
+					"src" : "/Users/skonb/OpenH264CameraView/app/src/main/cpp/android_aac_enc/src/band_nrg.c",
+					"workingDirectory" : "/Users/skonb/OpenH264CameraView/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain /Users/skonb/AndroidSDK/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/skonb/AndroidSDK/ndk-bundle/platforms/android-16/arch-arm -Daac_enc_EXPORTS -I../../../../src/main/cpp/android_aac_enc/src -I../../../../src/main/cpp/android_aac_enc/basic_op -I../../../../src/main/cpp/android_aac_enc/inc  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -Os -DNDEBUG -Os -DNDEBUG  -fPIC      -c ",
+					"src" : "/Users/skonb/OpenH264CameraView/app/src/main/cpp/android_aac_enc/src/bit_cnt.c",
+					"workingDirectory" : "/Users/skonb/OpenH264CameraView/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain /Users/skonb/AndroidSDK/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/skonb/AndroidSDK/ndk-bundle/platforms/android-16/arch-arm -Daac_enc_EXPORTS -I../../../../src/main/cpp/android_aac_enc/src -I../../../../src/main/cpp/android_aac_enc/basic_op -I../../../../src/main/cpp/android_aac_enc/inc  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -Os -DNDEBUG -Os -DNDEBUG  -fPIC      -c ",
+					"src" : "/Users/skonb/OpenH264CameraView/app/src/main/cpp/android_aac_enc/src/bitbuffer.c",
+					"workingDirectory" : "/Users/skonb/OpenH264CameraView/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain /Users/skonb/AndroidSDK/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/skonb/AndroidSDK/ndk-bundle/platforms/android-16/arch-arm -Daac_enc_EXPORTS -I../../../../src/main/cpp/android_aac_enc/src -I../../../../src/main/cpp/android_aac_enc/basic_op -I../../../../src/main/cpp/android_aac_enc/inc  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -Os -DNDEBUG -Os -DNDEBUG  -fPIC      -c ",
+					"src" : "/Users/skonb/OpenH264CameraView/app/src/main/cpp/android_aac_enc/src/bitenc.c",
+					"workingDirectory" : "/Users/skonb/OpenH264CameraView/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain /Users/skonb/AndroidSDK/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/skonb/AndroidSDK/ndk-bundle/platforms/android-16/arch-arm -Daac_enc_EXPORTS -I../../../../src/main/cpp/android_aac_enc/src -I../../../../src/main/cpp/android_aac_enc/basic_op -I../../../../src/main/cpp/android_aac_enc/inc  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -Os -DNDEBUG -Os -DNDEBUG  -fPIC      -c ",
+					"src" : "/Users/skonb/OpenH264CameraView/app/src/main/cpp/android_aac_enc/src/block_switch.c",
+					"workingDirectory" : "/Users/skonb/OpenH264CameraView/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain /Users/skonb/AndroidSDK/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/skonb/AndroidSDK/ndk-bundle/platforms/android-16/arch-arm -Daac_enc_EXPORTS -I../../../../src/main/cpp/android_aac_enc/src -I../../../../src/main/cpp/android_aac_enc/basic_op -I../../../../src/main/cpp/android_aac_enc/inc  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -Os -DNDEBUG -Os -DNDEBUG  -fPIC      -c ",
+					"src" : "/Users/skonb/OpenH264CameraView/app/src/main/cpp/android_aac_enc/src/channel_map.c",
+					"workingDirectory" : "/Users/skonb/OpenH264CameraView/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain /Users/skonb/AndroidSDK/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/skonb/AndroidSDK/ndk-bundle/platforms/android-16/arch-arm -Daac_enc_EXPORTS -I../../../../src/main/cpp/android_aac_enc/src -I../../../../src/main/cpp/android_aac_enc/basic_op -I../../../../src/main/cpp/android_aac_enc/inc  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -Os -DNDEBUG -Os -DNDEBUG  -fPIC      -c ",
+					"src" : "/Users/skonb/OpenH264CameraView/app/src/main/cpp/android_aac_enc/src/dyn_bits.c",
+					"workingDirectory" : "/Users/skonb/OpenH264CameraView/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain /Users/skonb/AndroidSDK/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/skonb/AndroidSDK/ndk-bundle/platforms/android-16/arch-arm -Daac_enc_EXPORTS -I../../../../src/main/cpp/android_aac_enc/src -I../../../../src/main/cpp/android_aac_enc/basic_op -I../../../../src/main/cpp/android_aac_enc/inc  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -Os -DNDEBUG -Os -DNDEBUG  -fPIC      -c ",
+					"src" : "/Users/skonb/OpenH264CameraView/app/src/main/cpp/android_aac_enc/src/grp_data.c",
+					"workingDirectory" : "/Users/skonb/OpenH264CameraView/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain /Users/skonb/AndroidSDK/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/skonb/AndroidSDK/ndk-bundle/platforms/android-16/arch-arm -Daac_enc_EXPORTS -I../../../../src/main/cpp/android_aac_enc/src -I../../../../src/main/cpp/android_aac_enc/basic_op -I../../../../src/main/cpp/android_aac_enc/inc  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -Os -DNDEBUG -Os -DNDEBUG  -fPIC      -c ",
+					"src" : "/Users/skonb/OpenH264CameraView/app/src/main/cpp/android_aac_enc/src/interface.c",
+					"workingDirectory" : "/Users/skonb/OpenH264CameraView/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain /Users/skonb/AndroidSDK/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/skonb/AndroidSDK/ndk-bundle/platforms/android-16/arch-arm -Daac_enc_EXPORTS -I../../../../src/main/cpp/android_aac_enc/src -I../../../../src/main/cpp/android_aac_enc/basic_op -I../../../../src/main/cpp/android_aac_enc/inc  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -Os -DNDEBUG -Os -DNDEBUG  -fPIC      -c ",
+					"src" : "/Users/skonb/OpenH264CameraView/app/src/main/cpp/android_aac_enc/src/line_pe.c",
+					"workingDirectory" : "/Users/skonb/OpenH264CameraView/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain /Users/skonb/AndroidSDK/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/skonb/AndroidSDK/ndk-bundle/platforms/android-16/arch-arm -Daac_enc_EXPORTS -I../../../../src/main/cpp/android_aac_enc/src -I../../../../src/main/cpp/android_aac_enc/basic_op -I../../../../src/main/cpp/android_aac_enc/inc  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -Os -DNDEBUG -Os -DNDEBUG  -fPIC      -c ",
+					"src" : "/Users/skonb/OpenH264CameraView/app/src/main/cpp/android_aac_enc/src/memalign.c",
+					"workingDirectory" : "/Users/skonb/OpenH264CameraView/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain /Users/skonb/AndroidSDK/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/skonb/AndroidSDK/ndk-bundle/platforms/android-16/arch-arm -Daac_enc_EXPORTS -I../../../../src/main/cpp/android_aac_enc/src -I../../../../src/main/cpp/android_aac_enc/basic_op -I../../../../src/main/cpp/android_aac_enc/inc  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -Os -DNDEBUG -Os -DNDEBUG  -fPIC      -c ",
+					"src" : "/Users/skonb/OpenH264CameraView/app/src/main/cpp/android_aac_enc/src/ms_stereo.c",
+					"workingDirectory" : "/Users/skonb/OpenH264CameraView/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain /Users/skonb/AndroidSDK/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/skonb/AndroidSDK/ndk-bundle/platforms/android-16/arch-arm -Daac_enc_EXPORTS -I../../../../src/main/cpp/android_aac_enc/src -I../../../../src/main/cpp/android_aac_enc/basic_op -I../../../../src/main/cpp/android_aac_enc/inc  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -Os -DNDEBUG -Os -DNDEBUG  -fPIC      -c ",
+					"src" : "/Users/skonb/OpenH264CameraView/app/src/main/cpp/android_aac_enc/src/pre_echo_control.c",
+					"workingDirectory" : "/Users/skonb/OpenH264CameraView/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain /Users/skonb/AndroidSDK/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/skonb/AndroidSDK/ndk-bundle/platforms/android-16/arch-arm -Daac_enc_EXPORTS -I../../../../src/main/cpp/android_aac_enc/src -I../../../../src/main/cpp/android_aac_enc/basic_op -I../../../../src/main/cpp/android_aac_enc/inc  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -Os -DNDEBUG -Os -DNDEBUG  -fPIC      -c ",
+					"src" : "/Users/skonb/OpenH264CameraView/app/src/main/cpp/android_aac_enc/src/psy_configuration.c",
+					"workingDirectory" : "/Users/skonb/OpenH264CameraView/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain /Users/skonb/AndroidSDK/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/skonb/AndroidSDK/ndk-bundle/platforms/android-16/arch-arm -Daac_enc_EXPORTS -I../../../../src/main/cpp/android_aac_enc/src -I../../../../src/main/cpp/android_aac_enc/basic_op -I../../../../src/main/cpp/android_aac_enc/inc  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -Os -DNDEBUG -Os -DNDEBUG  -fPIC      -c ",
+					"src" : "/Users/skonb/OpenH264CameraView/app/src/main/cpp/android_aac_enc/src/psy_main.c",
+					"workingDirectory" : "/Users/skonb/OpenH264CameraView/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain /Users/skonb/AndroidSDK/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/skonb/AndroidSDK/ndk-bundle/platforms/android-16/arch-arm -Daac_enc_EXPORTS -I../../../../src/main/cpp/android_aac_enc/src -I../../../../src/main/cpp/android_aac_enc/basic_op -I../../../../src/main/cpp/android_aac_enc/inc  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -Os -DNDEBUG -Os -DNDEBUG  -fPIC      -c ",
+					"src" : "/Users/skonb/OpenH264CameraView/app/src/main/cpp/android_aac_enc/src/qc_main.c",
+					"workingDirectory" : "/Users/skonb/OpenH264CameraView/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain /Users/skonb/AndroidSDK/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/skonb/AndroidSDK/ndk-bundle/platforms/android-16/arch-arm -Daac_enc_EXPORTS -I../../../../src/main/cpp/android_aac_enc/src -I../../../../src/main/cpp/android_aac_enc/basic_op -I../../../../src/main/cpp/android_aac_enc/inc  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -Os -DNDEBUG -Os -DNDEBUG  -fPIC      -c ",
+					"src" : "/Users/skonb/OpenH264CameraView/app/src/main/cpp/android_aac_enc/src/quantize.c",
+					"workingDirectory" : "/Users/skonb/OpenH264CameraView/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain /Users/skonb/AndroidSDK/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/skonb/AndroidSDK/ndk-bundle/platforms/android-16/arch-arm -Daac_enc_EXPORTS -I../../../../src/main/cpp/android_aac_enc/src -I../../../../src/main/cpp/android_aac_enc/basic_op -I../../../../src/main/cpp/android_aac_enc/inc  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -Os -DNDEBUG -Os -DNDEBUG  -fPIC      -c ",
+					"src" : "/Users/skonb/OpenH264CameraView/app/src/main/cpp/android_aac_enc/src/sf_estim.c",
+					"workingDirectory" : "/Users/skonb/OpenH264CameraView/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain /Users/skonb/AndroidSDK/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/skonb/AndroidSDK/ndk-bundle/platforms/android-16/arch-arm -Daac_enc_EXPORTS -I../../../../src/main/cpp/android_aac_enc/src -I../../../../src/main/cpp/android_aac_enc/basic_op -I../../../../src/main/cpp/android_aac_enc/inc  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -Os -DNDEBUG -Os -DNDEBUG  -fPIC      -c ",
+					"src" : "/Users/skonb/OpenH264CameraView/app/src/main/cpp/android_aac_enc/src/spreading.c",
+					"workingDirectory" : "/Users/skonb/OpenH264CameraView/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain /Users/skonb/AndroidSDK/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/skonb/AndroidSDK/ndk-bundle/platforms/android-16/arch-arm -Daac_enc_EXPORTS -I../../../../src/main/cpp/android_aac_enc/src -I../../../../src/main/cpp/android_aac_enc/basic_op -I../../../../src/main/cpp/android_aac_enc/inc  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -Os -DNDEBUG -Os -DNDEBUG  -fPIC      -c ",
+					"src" : "/Users/skonb/OpenH264CameraView/app/src/main/cpp/android_aac_enc/src/stat_bits.c",
+					"workingDirectory" : "/Users/skonb/OpenH264CameraView/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain /Users/skonb/AndroidSDK/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/skonb/AndroidSDK/ndk-bundle/platforms/android-16/arch-arm -Daac_enc_EXPORTS -I../../../../src/main/cpp/android_aac_enc/src -I../../../../src/main/cpp/android_aac_enc/basic_op -I../../../../src/main/cpp/android_aac_enc/inc  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -Os -DNDEBUG -Os -DNDEBUG  -fPIC      -c ",
+					"src" : "/Users/skonb/OpenH264CameraView/app/src/main/cpp/android_aac_enc/src/tns.c",
+					"workingDirectory" : "/Users/skonb/OpenH264CameraView/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain /Users/skonb/AndroidSDK/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/skonb/AndroidSDK/ndk-bundle/platforms/android-16/arch-arm -Daac_enc_EXPORTS -I../../../../src/main/cpp/android_aac_enc/src -I../../../../src/main/cpp/android_aac_enc/basic_op -I../../../../src/main/cpp/android_aac_enc/inc  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -Os -DNDEBUG -Os -DNDEBUG  -fPIC      -c ",
+					"src" : "/Users/skonb/OpenH264CameraView/app/src/main/cpp/android_aac_enc/src/transform.c",
+					"workingDirectory" : "/Users/skonb/OpenH264CameraView/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+				}
+			],
+			"output" : "/Users/skonb/OpenH264CameraView/app/build/intermediates/cmake/release/obj/armeabi-v7a/libaac_enc.so",
+			"toolchain" : "11574389739953275151"
+		},
 		"libopenh264-Release-armeabi-v7a" : 
 		{
 			"abi" : "armeabi-v7a",
@@ -26,8 +217,14 @@
 			[
 				
 				{
-					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain /Users/skonb/AndroidSDK/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/skonb/AndroidSDK/ndk-bundle/platforms/android-16/arch-arm  -Dnative_lib_EXPORTS -I../../../../../openh264/include -isystem /Users/skonb/AndroidSDK/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/include -isystem /Users/skonb/AndroidSDK/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/libs/armeabi-v7a/include -isystem /Users/skonb/AndroidSDK/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/include/backward  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -fno-exceptions -fno-rtti -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -fno-exceptions -fno-rtti -std=c++11 -frtti -fexceptions -Os -DNDEBUG -Os -DNDEBUG  -fPIC    -c ",
-					"src" : "/Users/skonb/OpenH264CameraView/app/src/main/cpp/native-lib.cpp",
+					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain /Users/skonb/AndroidSDK/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/skonb/AndroidSDK/ndk-bundle/platforms/android-16/arch-arm  -Dnative_lib_EXPORTS -I../../../../../openh264/include -I../../../../src/main/cpp/android_aac_enc -isystem /Users/skonb/AndroidSDK/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/include -isystem /Users/skonb/AndroidSDK/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/libs/armeabi-v7a/include -isystem /Users/skonb/AndroidSDK/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/include/backward  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -fno-exceptions -fno-rtti -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -fno-exceptions -fno-rtti -std=c++11 -frtti -fexceptions -Os -DNDEBUG -Os -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/skonb/OpenH264CameraView/app/src/main/cpp/exports.cpp",
+					"workingDirectory" : "/Users/skonb/OpenH264CameraView/app/.externalNativeBuild/cmake/release/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  -target armv7-none-linux-androideabi -gcc-toolchain /Users/skonb/AndroidSDK/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/skonb/AndroidSDK/ndk-bundle/platforms/android-16/arch-arm -Dnative_lib_EXPORTS -I../../../../../openh264/include -I../../../../src/main/cpp/android_aac_enc  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -Os -DNDEBUG -Os -DNDEBUG  -fPIC      -c ",
+					"src" : "/Users/skonb/OpenH264CameraView/app/src/main/cpp/aac-enc.c",
 					"workingDirectory" : "/Users/skonb/OpenH264CameraView/app/.externalNativeBuild/cmake/release/armeabi-v7a"
 				}
 			],

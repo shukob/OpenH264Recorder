@@ -20,6 +20,16 @@ rule CUSTOM_COMMAND
 
 
 #############################################
+# Rule for compiling C files.
+
+rule C_COMPILER__native-lib
+  depfile = $DEP_FILE
+  deps = gcc
+  command = /Users/skonb/AndroidSDK/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang  -target armv5te-none-linux-androideabi -gcc-toolchain /Users/skonb/AndroidSDK/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/skonb/AndroidSDK/ndk-bundle/platforms/android-16/arch-arm $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out   -c $IN_ABS
+  description = Building C object $out
+
+
+#############################################
 # Rule for compiling CXX files.
 
 rule CXX_COMPILER__native-lib
@@ -35,6 +45,25 @@ rule CXX_COMPILER__native-lib
 rule CXX_SHARED_LIBRARY_LINKER__native-lib
   command = $PRE_LINK && /Users/skonb/AndroidSDK/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++  -target armv5te-none-linux-androideabi -gcc-toolchain /Users/skonb/AndroidSDK/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/skonb/AndroidSDK/ndk-bundle/platforms/android-16/arch-arm -fPIC $LANGUAGE_COMPILE_FLAGS $ARCH_FLAGS $LINK_FLAGS -shared $SONAME_FLAG$SONAME -o $TARGET_FILE $in $LINK_PATH $LINK_LIBRARIES && $POST_BUILD
   description = Linking CXX shared library $TARGET_FILE
+  restat = $RESTAT
+
+
+#############################################
+# Rule for compiling C files.
+
+rule C_COMPILER__aac_enc
+  depfile = $DEP_FILE
+  deps = gcc
+  command = /Users/skonb/AndroidSDK/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang  -target armv5te-none-linux-androideabi -gcc-toolchain /Users/skonb/AndroidSDK/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/skonb/AndroidSDK/ndk-bundle/platforms/android-16/arch-arm $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out   -c $IN_ABS
+  description = Building C object $out
+
+
+#############################################
+# Rule for linking C shared library.
+
+rule C_SHARED_LIBRARY_LINKER__aac_enc
+  command = $PRE_LINK && /Users/skonb/AndroidSDK/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang  -target armv5te-none-linux-androideabi -gcc-toolchain /Users/skonb/AndroidSDK/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/skonb/AndroidSDK/ndk-bundle/platforms/android-16/arch-arm -fPIC $LANGUAGE_COMPILE_FLAGS $ARCH_FLAGS $LINK_FLAGS -shared $SONAME_FLAG$SONAME -o $TARGET_FILE $in $LINK_PATH $LINK_LIBRARIES && $POST_BUILD
+  description = Linking C shared library $TARGET_FILE
   restat = $RESTAT
 
 
