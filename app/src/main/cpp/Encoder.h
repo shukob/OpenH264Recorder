@@ -240,12 +240,11 @@ public:
         if (width == _originalInputWidth && height == _originalInputHeight) {
 
             if (rotation == 0) {
-                auto sourceYUV = YUV::from(source.data(), width, height);
-                libyuv::NV21ToI420(sourceYUV.y, sourceYUV.yStride, sourceYUV.u, sourceYUV.uStride,
+                libyuv::NV21ToI420(source.data(), width, source.data() + width * height, ((width + 1) / 2) * 2,
                                    _sourcePicture.pData[0], _sourcePicture.iStride[0],
                                    _sourcePicture.pData[1], _sourcePicture.iStride[1],
                                    _sourcePicture.pData[2], _sourcePicture.iStride[2], width, height);
-                NV21toI420((const char *) source.data(), (char *) _buffer.data(), width, height);
+//                NV21toI420((const char *) source.data(), (char *) _buffer.data(), width, height);
             } else {
                 _tempBuffer.SetLength(width * height * 3 / 2);
                 auto sourceYUV = YUV::from(source.data(), width, height);
@@ -254,12 +253,6 @@ public:
                                    tempYUV.y, tempYUV.yStride,
                                    tempYUV.u, tempYUV.uStride,
                                    tempYUV.v, tempYUV.vStride, width, height);
-                int rotatedWidth = width, rotatedHeight = height;
-                if (rotation % 180 != 0) {
-                    rotatedWidth = height;
-                    rotatedHeight = width;
-                }
-
                 libyuv::I420Rotate(tempYUV.y, tempYUV.yStride, tempYUV.u, tempYUV.uStride, tempYUV.v, tempYUV.vStride,
                                    _sourcePicture.pData[0], _sourcePicture.iStride[0],
                                    _sourcePicture.pData[1], _sourcePicture.iStride[1],
@@ -324,34 +317,6 @@ public:
     }
 
 protected:
-    static bool NV21toI420(const char *src, char *dst, int width, int height) {
-        if (!src || !dst) {
-            return false;
-        }
-
-        unsigned int YSize = width * height;
-        unsigned int UVSize = (YSize >> 1);
-
-        // NV21: Y..Y + VUV...U
-        const char *pSrcY = src;
-        const char *pSrcUV = src + YSize;
-
-        // I420: Y..Y + U.U + V.V
-        char *pDstY = dst;
-        char *pDstU = dst + YSize;
-        char *pDstV = dst + YSize + (UVSize >> 1);
-
-        // copy Y
-        memcpy(pDstY, pSrcY, YSize);
-
-        // copy U and V
-        for (int k = 0; k < (UVSize >> 1); k++) {
-            pDstV[k] = pSrcUV[k * 2];     // copy V
-            pDstU[k] = pSrcUV[k * 2 + 1];   // copy U
-        }
-
-        return true;
-    }
 
     int _originalInputWidth;
     int _originalInputHeight;
