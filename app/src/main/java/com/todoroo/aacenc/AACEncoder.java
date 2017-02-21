@@ -13,7 +13,7 @@ public class AACEncoder {
      * Native JNI - encode one or more frames
      *
      */
-    public native void encode(byte[] inputArray);
+    public native void encode(byte[] inputArray, int size);
 
     /**
      * Native JNI - uninitialize AAC h264Encoder and flush file

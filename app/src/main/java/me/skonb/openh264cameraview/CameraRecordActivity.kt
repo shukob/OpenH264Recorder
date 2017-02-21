@@ -58,7 +58,6 @@ class CameraRecordActivity : AppCompatActivity() {
     var videoWidth: Int = 0
     var videoHeight: Int = 0
     var progressDialogHelper = ProgressDialogHelper()
-    val videoFileList = ArrayList<File>()
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
@@ -71,28 +70,16 @@ class CameraRecordActivity : AppCompatActivity() {
                 progressDialogHelper.showProgressDialog(this@CameraRecordActivity)
                 progressDialogHelper.updateProgressDialogMessage(this@CameraRecordActivity, "動画を生成中です")
                 mp4Recorder.stop {
-                    if (videoFileList.isEmpty()) {
-                        progressDialogHelper.hideProgressDialog(this@CameraRecordActivity)
-                        ErrorDialogHelper().showMessageDialogWithMessage(this@CameraRecordActivity, "動画を生成しました",
-                                "生成完了", "再生", object : Runnable {
-                            override fun run() {
-                                val intent = Intent(Intent.ACTION_VIEW, FileProvider.getUriForFile(this@CameraRecordActivity, "${applicationContext.packageName}.provider", mp4Recorder.outputFile))
-                                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-                                startActivity(intent)
-                            }
-                        })
-                    } else {
-                        videoFileList.add(mp4Recorder.outputFile!!)
-                        val output = mp4Recorder.concat(videoFileList)
-                        ErrorDialogHelper().showMessageDialogWithMessage(this@CameraRecordActivity, "動画を生成しました",
-                                "生成完了", "再生", object : Runnable {
-                            override fun run() {
-                                val intent = Intent(Intent.ACTION_VIEW, FileProvider.getUriForFile(this@CameraRecordActivity, "${applicationContext.packageName}.provider", mp4Recorder.outputFile))
-                                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-                                startActivity(intent)
-                            }
-                        })
-                    }
+                    progressDialogHelper.hideProgressDialog(this@CameraRecordActivity)
+                    ErrorDialogHelper().showMessageDialogWithMessage(this@CameraRecordActivity, "動画を生成しました",
+                            "生成完了", "再生", object : Runnable {
+                        override fun run() {
+                            val intent = Intent(Intent.ACTION_VIEW, FileProvider.getUriForFile(this@CameraRecordActivity, "${applicationContext.packageName}.provider", mp4Recorder.outputFile))
+                            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                            finish()
+                            startActivity(intent)
+                        }
+                    })
 
                 }
             }

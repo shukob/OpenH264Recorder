@@ -5,7 +5,7 @@
 #include <inc/cmnMemory.h>
 #include <android/log.h> 
 
-#define DEBUG 0
+#define DEBUG 1
 
 #if DEBUG
 #define LOG(msg, args...) __android_log_print(ANDROID_LOG_ERROR, "aac-enc", msg, ## args)
@@ -87,12 +87,12 @@ Java_com_todoroo_aacenc_AACEncoder_init(JNIEnv *env,
 void
 Java_com_todoroo_aacenc_AACEncoder_encode(JNIEnv *env,
                                           jobject thiz,
-                                          jbyteArray inputArray) {
+                                          jbyteArray inputArray, jint size) {
 
     LOG("writing to handle: %x", handle);
 
     jbyte *buffer = (*env)->GetByteArrayElements(env, inputArray, (jboolean) NULL);
-    int inputSize = (*env)->GetArrayLength(env, inputArray);
+    int inputSize = size;//(*env)->GetArrayLength(env, inputArray);
 
     VO_CODECBUFFER input = {0}, output = {0};
     VO_AUDIO_OUTPUTINFO output_info = {0};

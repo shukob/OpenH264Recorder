@@ -19,9 +19,8 @@ class AACRecorder {
     }
 
 
-    val aacEncoder = AACEncoder()
+    var aacEncoder: AACEncoder? = null
     var audioRecord: AudioRecord? = null
-    var buffer = byteArrayOf()
     var samplingRate = 44100
     var outputFile: File? = null
     var recording = false
@@ -35,23 +34,6 @@ class AACRecorder {
 
     constructor(outputFile: File?) {
         this.outputFile = outputFile
-//        audioRecord = findAudioRecord()
-//        buffer = ByteArray(bufferSize / 2)
-//        audioRecord?.setRecordPositionUpdateListener(object : AudioRecord.OnRecordPositionUpdateListener {
-//            override fun onMarkerReached(p0: AudioRecord?) {
-//
-//            }
-//
-//            override fun onPeriodicNotification(p0: AudioRecord?) {
-//                audioRecord?.read(buffer, 0, bufferSize / 2)
-//                if (recording) {
-//                    aacEncoder.encode(buffer)
-//                }
-//            }
-//        })
-//        audioRecord?.positionNotificationPeriod = bufferSize / 2
-//        aacEncoder.init(64000, 1, samplingRate, 16, outputFile?.absolutePath)
-
     }
 
     private inner class AudioRecordRunnable : Runnable {
@@ -75,12 +57,12 @@ class AACRecorder {
 
                             if (bufferSize != AudioRecord.ERROR_BAD_VALUE) {
                                 // check if we can instantiate and have a success
-                                val recorder = AudioRecord(AudioSource.DEFAULT, rate, channelConfig.toInt(), audioFormat.toInt(), bufferSize)
+                                val recorder = AudioRecord(AudioSource.VOICE_RECOGNITION, rate, channelConfig.toInt(), audioFormat.toInt(), bufferSize)
 
                                 if (recorder.state == AudioRecord.STATE_INITIALIZED) {
                                     this@AACRecorder.samplingRate = rate
                                     this@AACRecorder.audioRecord = recorder
-                                    this@AACRecorder.bufferSize = bufferSize
+                                    this@AACRecorder.bufferSize = bufferSize * 8
                                     return
                                 }
                             }
@@ -96,11 +78,15 @@ class AACRecorder {
         override fun run() {
             isReady = false
             android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_AUDIO)
-            var frameDataArray: ByteBuffer
             findAudioRecord()
             audioRecord?.let { audioRecord ->
-                val frameData = ByteArray(bufferSize)
-                aacEncoder.init(64000, audioRecord.channelCount, samplingRate,
+                val buffer = ByteArray(bufferSize)
+                aacEncoder = AACEncoder()
+                aacEncoder?.init(64000, when (audioRecord.channelConfiguration) {
+                    AudioFormat.CHANNEL_IN_MONO -> 1
+                    AudioFormat.CHANNEL_IN_STEREO -> 2
+                    else -> 1
+                }, samplingRate,
                         when (audioRecord.audioFormat) {
                             AudioFormat.ENCODING_PCM_16BIT -> 16
                             AudioFormat.ENCODING_PCM_8BIT -> 8
@@ -108,37 +94,24 @@ class AACRecorder {
                         }
                         , outputFile?.absolutePath)
                 audioRecord.startRecording()
-                var cache: ByteArray? = null
                 synchronized(sync!!) {
                     isReady = true
                     sync?.notifyAll()
                 }
                 while (runAudioThread) {
-                    val readDataSize = audioRecord.read(frameData, 0, frameData.size)
+                    val readDataSize = audioRecord.read(buffer, 0, bufferSize)
                     if (readDataSize > 0) {
                         if (runAudioThread && recording) {
-                            if (cache != null) {
-                                val frameLength = cache.size + readDataSize
-                                frameDataArray = ByteBuffer.allocate(frameLength)
-                                frameDataArray.put(cache)
-                                val readData = ByteArray(readDataSize)
-                                for (i in 0..readDataSize - 1)
-                                    readData[i] = frameData[i]
-                                frameDataArray.put(readData)
-                                cache = null
-                            } else {
-                                frameDataArray = ByteBuffer.wrap(frameData, 0, readDataSize)
-                            }
-                            aacEncoder.encode(frameDataArray.array())
+                            aacEncoder?.encode(buffer, readDataSize)
                             Log.i(TAG, "encoded ${readDataSize}")
                         }
-                    } else if (runAudioThread && !recording && cache == null)
-                        cache = frameData.clone()
+                    }
                 }
                 audioRecord.stop()
                 audioRecord.release()
                 this@AACRecorder.audioRecord = null
-                aacEncoder.uninit()
+                aacEncoder?.uninit()
+                aacEncoder = null
             }
         }
     }
@@ -173,7 +146,9 @@ class AACRecorder {
 
     fun release() {
         audioRecord?.release()
-        aacEncoder.uninit()
+        aacEncoder?.uninit()
+        audioRecord = null
+        aacEncoder = null
     }
 
     fun join() {
