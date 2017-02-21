@@ -32,3 +32,13 @@ proguard/
 
 # Mac files
 .DS_Store
+
+# C/CXX Object Files
+*.o
+*.d
+
+# CMake
+*.cmake
+*.ninja_log
+*.ninja_deps
+app/.externalNativeBuild/

@@ -12,6 +12,7 @@ class H264Recorder : Camera.PreviewCallback {
 
     interface Delegate {
         fun onRecordingStop(recorder: H264Recorder)
+        fun onUpdateRecordedLength(recorder: H264Recorder, length: Long)
     }
 
     constructor(outputFile: File?) {
@@ -24,7 +25,7 @@ class H264Recorder : Camera.PreviewCallback {
     private var frameRate: Float = 0.toFloat()
     protected var recording = false
     var maxDuration = 0L
-    protected var recordedTime = 0L
+    var recordedTime = 0L
     @Volatile protected var recordingStarted = 0L
     @Volatile protected var lastRecordedTimeOffset = 0L
     @Volatile private var runVideoThread: Boolean = false
@@ -47,6 +48,7 @@ class H264Recorder : Camera.PreviewCallback {
             Camera.getCameraInfo(value, cameraInfo)
         }
 
+
     private inner class VideoEncoderRunnable : Runnable {
 
         override fun run() {
@@ -58,7 +60,8 @@ class H264Recorder : Camera.PreviewCallback {
                 lastData = concurrentData == null && !runVideoThread
                 concurrentData?.let {
                     synchronized(this) {
-                        h264Encoder.encode(it.data!!, it.timeStamp, it.cameraInfo!!)
+                        h264Encoder.encode(it.data!!, it.timeStamp, it.cameraInfo!!, it.width, it.height
+                        )
                     }
                 }
             }
@@ -73,11 +76,12 @@ class H264Recorder : Camera.PreviewCallback {
                 val currentTime = System.currentTimeMillis()
                 val recordDuration = currentTime - recordingStarted
                 recordedTime = recordDuration + lastRecordedTimeOffset
-                videoDataQueue.offer(VideoData().set(recordedTime, data, cameraInfo))
+                videoDataQueue.offer(VideoData().set(recordedTime, data, cameraInfo, previewSize!!.width, previewSize!!.height))
             } else if (recordedTime >= maxDuration) {
                 recordedTime = maxDuration
                 stop()
             }
+            delegate?.onUpdateRecordedLength(this, recordedTime)
             camera?.addCallbackBuffer(data)
         }
 //        if (recording) {
@@ -142,7 +146,11 @@ class H264Recorder : Camera.PreviewCallback {
     }
 
     fun release() {
-        camera?.setPreviewCallback(null)
+        try {
+            camera?.setPreviewCallback(null)
+        } catch (e: Exception) {
+
+        }
         h264Encoder.destroyEncoder()
     }
 

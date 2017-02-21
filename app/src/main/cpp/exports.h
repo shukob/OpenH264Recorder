@@ -17,7 +17,8 @@ JNIEXPORT void JNICALL Java_me_skonb_openh264cameraview_H264Encoder_createEncode
 JNIEXPORT void JNICALL Java_me_skonb_openh264cameraview_H264Encoder_destroyEncoder(JNIEnv *env, jobject jThis);
 
 //@returns length of encoded data in bytes
-JNIEXPORT jint JNICALL Java_me_skonb_openh264cameraview_H264Encoder_encode(JNIEnv *env, jobject jThis, jbyteArray data, jlong timeStamp, jobject cameraInfo);
+JNIEXPORT jint JNICALL Java_me_skonb_openh264cameraview_H264Encoder_encode(JNIEnv *env, jobject jThis, jbyteArray data, jlong timeStamp, jobject cameraInfo, jint width
+, jint height);
 
 JNIEXPORT void JNICALL Java_me_skonb_openh264cameraview_H265Encoder_fetchEncodedData(JNIEnv *env, jobject jThis, jbyteArray output);
 

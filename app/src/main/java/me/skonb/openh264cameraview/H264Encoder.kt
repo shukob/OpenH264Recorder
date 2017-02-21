@@ -1,7 +1,6 @@
 package me.skonb.openh264cameraview
 
 import android.hardware.Camera
-import android.system.Os.poll
 
 
 /**
@@ -14,6 +13,6 @@ class H264Encoder {
 
     external fun createEncoder(width: Int, height: Int, outputPath: String)
     external fun destroyEncoder()
-    external fun encode(data: ByteArray, timeStamp: Long, cameraInfo: Camera.CameraInfo): Int
+    external fun encode(data: ByteArray, timeStamp: Long, cameraInfo: Camera.CameraInfo, width: Int, height: Int): Int
 
 }

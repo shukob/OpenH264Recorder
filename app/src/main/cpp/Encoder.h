@@ -11,14 +11,22 @@
 #include "BufferedData.h"
 #include <iostream>
 #include <fstream>
+#include <libyuv/convert.h>
+#include <libyuv/scale.h>
+#include <libyuv.h>
+#include "YUV.h"
 
 extern void logEncode(void *context, int level, const char *message);
 
 class Encoder {
 
 public:
-    Encoder(int width, int height, std::string outputPath) : _inputWidth(width),
-                                                             _inputHeight(height),
+    typedef enum {
+        NV21
+    } SourceFormat;
+
+    Encoder(int width, int height, std::string outputPath) : _originalInputWidth(width),
+                                                             _originalInputHeight(height),
                                                              _outputPath(outputPath),
                                                              _encoder(NULL) {
         int rv = 0;
@@ -28,8 +36,8 @@ public:
         memset(&param, 0, sizeof(param));
         param.iUsageType = CAMERA_VIDEO_REAL_TIME;
         param.fMaxFrameRate = 30;
-        param.iPicWidth = _inputWidth;
-        param.iPicHeight = _inputHeight;
+        param.iPicWidth = _originalInputWidth;
+        param.iPicHeight = _originalInputHeight;
         param.iTargetBitrate = 5000000;
         param.iRCMode = RC_BITRATE_MODE;
 //        SEncParamExt param;
@@ -37,8 +45,8 @@ public:
 //
 //        param.iUsageType = CAMERA_VIDEO_NON_REAL_TIME;
 //        param.fMaxFrameRate = 30;
-//        param.iPicWidth = _inputWidth;
-//        param.iPicHeight = _inputHeight;
+//        param.iPicWidth = _originalInputWidth;
+//        param.iPicHeight = _originalInputHeight;
 //        param.iTargetBitrate = 5000000;
 //        param.bEnableDenoise = 0;
 ////        param.iSpatialLayerNum = pEncParamExt->iSpatialLayerNum;
@@ -50,8 +58,8 @@ public:
 //            param.iMultipleThreadIdc = 2;
 //
 //        for (int i = 0; i < param.iSpatialLayerNum; i++) {
-//            param.sSpatialLayers[i].iVideoWidth = _inputWidth >> (param.iSpatialLayerNum - 1 - i);
-//            param.sSpatialLayers[i].iVideoHeight = _inputHeight >> (param.iSpatialLayerNum - 1 - i);
+//            param.sSpatialLayers[i].iVideoWidth = _originalInputWidth >> (param.iSpatialLayerNum - 1 - i);
+//            param.sSpatialLayers[i].iVideoHeight = _originalInputHeight >> (param.iSpatialLayerNum - 1 - i);
 //            param.sSpatialLayers[i].fFrameRate = 30;
 //            param.sSpatialLayers[i].iSpatialBitrate = param.iTargetBitrate;
 //
@@ -70,7 +78,7 @@ public:
 //        }
 //        param.iTargetBitrate *= param.iSpatialLayerNum;
 
-        setSize(_inputWidth, _inputHeight);
+        setSize(_originalInputWidth, _originalInputHeight);
         int level = WELS_LOG_DETAIL;
         rv = _encoder->SetOption(ENCODER_OPTION_TRACE_LEVEL, &level);
         void (*func)(void *, int, const char *) = &logEncode;
@@ -105,8 +113,8 @@ public:
     void initParam() {
         _param.iUsageType = CAMERA_VIDEO_NON_REAL_TIME;
         _param.fMaxFrameRate = 30;
-        _param.iPicWidth = _inputWidth;
-        _param.iPicHeight = _inputHeight;
+        _param.iPicWidth = _originalInputWidth;
+        _param.iPicHeight = _originalInputHeight;
         _param.iTargetBitrate = 5000000;
     }
 
@@ -170,11 +178,10 @@ public:
         return _encoder->InitializeExt(&_param);
     }
 
-    void setCurrentTimeStamp(long long timeStamp){
-        _sourcePicture.uiTimeStamp = timeStamp;
-    }
 
-    int encodeOnce() {
+    int encodeOnce(BufferedData &d, SourceFormat format, long long timeStamp, int width, int height, int rotation) {
+        _sourcePicture.uiTimeStamp = timeStamp;
+        applySourceData(d, format, width, height, rotation);
         int ret = _encoder->EncodeFrame(&_sourcePicture, &_info);
         if (ret) {
             _previouslyEncodedOutputLength = 0;
@@ -229,26 +236,119 @@ public:
         _sourcePicture.iColorFormat = videoFormatI420;
     }
 
-
-    int getPreviouslyEncodedOutputLength() {
-        return _previouslyEncodedOutputLength;
+    void applySourceData(BufferedData &source, SourceFormat format, int width, int height, int rotation) {
+        if (width == _originalInputWidth && height == _originalInputHeight) {
+//            auto sourceYUV = YUV::from(source.data(), width, height);
+//            libyuv::NV21ToI420(sourceYUV.y, sourceYUV.yStride, sourceYUV.u, sourceYUV.uStride,
+//                               _sourcePicture.pData[0], _sourcePicture.iStride[0],
+//                               _sourcePicture.pData[1], _sourcePicture.iStride[1],
+//                               _sourcePicture.pData[2], _sourcePicture.iStride[2], width, height);
+            if (rotation == 0) {
+                NV21toI420((const char *) source.data(), (char *) _buffer.data(), width, height);
+            } else {
+                _tempBuffer.SetLength(width * height * 3 / 2);
+                NV21toI420((const char *) source.data(), (char *) _tempBuffer.data(), width, height);
+                int rotatedWidth = 0, rotatedHeight = 0;
+                if (rotation % 180 != 0) {
+                    rotatedWidth = height;
+                    rotatedHeight = width;
+                }
+                auto yuv = YUV::from(_tempBuffer.data(), rotatedWidth, rotatedHeight);
+                libyuv::I420Rotate(yuv.y, yuv.yStride, yuv.u, yuv.uStride, yuv.v, yuv.vStride,
+                                   _sourcePicture.pData[0], _sourcePicture.iStride[0],
+                                   _sourcePicture.pData[1], _sourcePicture.iStride[1],
+                                   _sourcePicture.pData[2], _sourcePicture.iStride[2], width, height, libyuvRotationForRotationDegrees(rotation));
+            }
+        } else {
+            float sourceAR = (float) width / height;
+            float destinationAR = (float) _originalInputWidth / _originalInputHeight;
+            float scale = 1;
+            if (sourceAR > destinationAR) {
+                scale = (float) _originalInputHeight / height;
+            } else {
+                scale = (float) _originalInputWidth / width;
+            }
+            int outputWidth = _originalInputWidth / scale;
+            int outputHeight = _originalInputHeight / scale;
+            int cropX = (width - outputWidth) / 2;
+            int cropY = (height - outputHeight) / 2;
+            auto sourceYUV = YUV::from(source.data(), width, height);
+            _tempBuffer.SetLength(outputWidth * outputHeight * 3 / 2);
+            auto outputYUV = YUV::from(_tempBuffer.data(), outputWidth, outputHeight);
+            libyuv::ConvertToI420(source.data(), sourceYUV.length(),
+                                  outputYUV.y, outputYUV.yStride,
+                                  outputYUV.u, outputYUV.uStride,
+                                  outputYUV.v, outputYUV.vStride,
+                                  cropX, cropY, width, height,
+                                  outputWidth, outputHeight, libyuvRotationForRotationDegrees(rotation), libyuvFormatForSourceFormat(format)
+            );
+            libyuv::I420Scale(outputYUV.y, outputYUV.yStride,
+                              outputYUV.u, outputYUV.uStride,
+                              outputYUV.v, outputYUV.vStride, outputWidth, outputHeight,
+                              _sourcePicture.pData[0], _sourcePicture.iStride[0],
+                              _sourcePicture.pData[1], _sourcePicture.iStride[1],
+                              _sourcePicture.pData[2], _sourcePicture.iStride[2],
+                              _originalInputWidth, _originalInputHeight, libyuv::kFilterLinear);
+        }
     }
 
-    unsigned char *getPreviouslyEncodedOutputData() {
-        return _info.sLayerInfo[0].pBsBuf;
+    //TODO add definitions
+    static int libyuvFormatForSourceFormat(SourceFormat format) {
+        switch (format) {
+            case NV21:
+                return libyuv::FOURCC_NV21;
+            default:
+                return libyuv::FOURCC_NV21;
+        }
     }
 
-    int getInputWidth() {
-        return _inputWidth;
-    }
-
-    int getInputHeight() {
-        return _inputHeight;
+    static libyuv::RotationMode libyuvRotationForRotationDegrees(int rotationDegree) {
+        switch (rotationDegree) {
+            case 0:
+                return libyuv::kRotate0;
+            case 90:
+                return libyuv::kRotate90;
+            case 180:
+                return libyuv::kRotate180;
+            case 270:
+                return libyuv::kRotate270;
+            default:
+                return libyuv::kRotate0;
+        }
     }
 
 protected:
-    int _inputWidth;
-    int _inputHeight;
+    static bool NV21toI420(const char *src, char *dst, int width, int height) {
+        if (!src || !dst) {
+            return false;
+        }
+
+        unsigned int YSize = width * height;
+        unsigned int UVSize = (YSize >> 1);
+
+        // NV21: Y..Y + VUV...U
+        const char *pSrcY = src;
+        const char *pSrcUV = src + YSize;
+
+        // I420: Y..Y + U.U + V.V
+        char *pDstY = dst;
+        char *pDstU = dst + YSize;
+        char *pDstV = dst + YSize + (UVSize >> 1);
+
+        // copy Y
+        memcpy(pDstY, pSrcY, YSize);
+
+        // copy U and V
+        for (int k = 0; k < (UVSize >> 1); k++) {
+            pDstV[k] = pSrcUV[k * 2];     // copy V
+            pDstU[k] = pSrcUV[k * 2 + 1];   // copy U
+        }
+
+        return true;
+    }
+
+    int _originalInputWidth;
+    int _originalInputHeight;
     std::string _outputPath;
     ISVCEncoder *_encoder;
     BufferedData _buffer;
@@ -256,6 +356,7 @@ protected:
     SSourcePicture _sourcePicture;
     SFrameBSInfo _info;
     std::ofstream _outputStream;
+    BufferedData _tempBuffer;
     int _previouslyEncodedOutputLength;
 };
 

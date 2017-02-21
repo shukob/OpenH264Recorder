@@ -5,4 +5,8 @@
         android:id="@+id/action_stop"
         android:title="停止"
         and:showAsAction="always" />
+    <item
+        android:id="@+id/action_camera_orientation"
+        android:title="カメラ変更"
+        and:showAsAction="always" />
 </menu>

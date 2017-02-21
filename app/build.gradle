@@ -42,10 +42,12 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.googlecode.mp4parser:isoparser:1.1.7'
+    compile 'com.googlecode.mp4parser:isoparser:1.1.21'
     compile 'com.android.support:appcompat-v7:25.1.0'
     testCompile 'junit:junit:4.12'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile 'com.github.skonb:fenster:d7d57c8882'
+    compile 'com.github.skonb:android-gpuimage:6fe2a44e06'
 }
 repositories {
     mavenCentral()

@@ -19,10 +19,17 @@ class VideoData {
     var cameraInfo: CameraInfo? = null
         private set
 
-    operator fun set(timeStamp: Long, data: ByteArray, info: CameraInfo): VideoData {
+    var width: Int = 0
+        private set
+    var height: Int = 0
+        private set
+
+    operator fun set(timeStamp: Long, data: ByteArray, info: CameraInfo, width: Int, height: Int): VideoData {
         this.timeStamp = timeStamp
         this.data = data.copyOf()
         this.cameraInfo = cloneCameraInfo(info)
+        this.width = width
+        this.height = height
         return this
     }
 

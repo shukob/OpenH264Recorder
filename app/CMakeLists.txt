@@ -15,6 +15,7 @@ set_target_properties(libopenh264 PROPERTIES IMPORTED_LOCATION
     ${openh264_DIR}/lib/${ANDROID_ABI}/libopenh264.so)
 
 add_subdirectory(${CMAKE_SOURCE_DIR}/src/main/cpp/android_aac_enc)
+add_subdirectory(${CMAKE_SOURCE_DIR}/src/main/cpp/libyuv)
 
 add_library( # Sets the name of the library.
 
@@ -48,12 +49,14 @@ find_library( # Sets the name of the path variable.
 
 target_include_directories(native-lib PRIVATE
                            ${openh264_DIR}/include
+                           src/main/cpp/libyuv/include
                            src/main/cpp/android_aac_enc)
 
 target_link_libraries( # Specifies the target library.
                        native-lib
                        libopenh264
                        aac_enc
+                       libyuv
                        # Links the target library to the log library
                        # included in the NDK.
                        ${log-lib} )
