@@ -238,23 +238,29 @@ public:
 
     void applySourceData(BufferedData &source, SourceFormat format, int width, int height, int rotation) {
         if (width == _originalInputWidth && height == _originalInputHeight) {
-//            auto sourceYUV = YUV::from(source.data(), width, height);
-//            libyuv::NV21ToI420(sourceYUV.y, sourceYUV.yStride, sourceYUV.u, sourceYUV.uStride,
-//                               _sourcePicture.pData[0], _sourcePicture.iStride[0],
-//                               _sourcePicture.pData[1], _sourcePicture.iStride[1],
-//                               _sourcePicture.pData[2], _sourcePicture.iStride[2], width, height);
+
             if (rotation == 0) {
+                auto sourceYUV = YUV::from(source.data(), width, height);
+                libyuv::NV21ToI420(sourceYUV.y, sourceYUV.yStride, sourceYUV.u, sourceYUV.uStride,
+                                   _sourcePicture.pData[0], _sourcePicture.iStride[0],
+                                   _sourcePicture.pData[1], _sourcePicture.iStride[1],
+                                   _sourcePicture.pData[2], _sourcePicture.iStride[2], width, height);
                 NV21toI420((const char *) source.data(), (char *) _buffer.data(), width, height);
             } else {
                 _tempBuffer.SetLength(width * height * 3 / 2);
-                NV21toI420((const char *) source.data(), (char *) _tempBuffer.data(), width, height);
-                int rotatedWidth = 0, rotatedHeight = 0;
+                auto sourceYUV = YUV::from(source.data(), width, height);
+                auto tempYUV = YUV::from(_tempBuffer.data(), width, height);
+                libyuv::NV21ToI420(sourceYUV.y, sourceYUV.yStride, sourceYUV.u, sourceYUV.uStride,
+                                   tempYUV.y, tempYUV.yStride,
+                                   tempYUV.u, tempYUV.uStride,
+                                   tempYUV.v, tempYUV.vStride, width, height);
+                int rotatedWidth = width, rotatedHeight = height;
                 if (rotation % 180 != 0) {
                     rotatedWidth = height;
                     rotatedHeight = width;
                 }
-                auto yuv = YUV::from(_tempBuffer.data(), rotatedWidth, rotatedHeight);
-                libyuv::I420Rotate(yuv.y, yuv.yStride, yuv.u, yuv.uStride, yuv.v, yuv.vStride,
+
+                libyuv::I420Rotate(tempYUV.y, tempYUV.yStride, tempYUV.u, tempYUV.uStride, tempYUV.v, tempYUV.vStride,
                                    _sourcePicture.pData[0], _sourcePicture.iStride[0],
                                    _sourcePicture.pData[1], _sourcePicture.iStride[1],
                                    _sourcePicture.pData[2], _sourcePicture.iStride[2], width, height, libyuvRotationForRotationDegrees(rotation));

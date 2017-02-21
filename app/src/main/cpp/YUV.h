@@ -21,8 +21,8 @@ struct YUV {
         yuv.yStride = width;
         yuv.uStride = yuv.vStride = width >> 1;
         yuv.y = data;
-        yuv.u = yuv.y + yuv.yStride;
-        yuv.v = yuv.u + yuv.uStride;
+        yuv.u = yuv.y + width * height;
+        yuv.v = yuv.u + (width * height >> 2);
         yuv.width = width;
         yuv.height = height;
         return yuv;

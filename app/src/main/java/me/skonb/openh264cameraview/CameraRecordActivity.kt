@@ -357,7 +357,7 @@ class CameraRecordActivity : AppCompatActivity() {
             camera?.let { camera ->
                 surfaceTexture?.let { surfaceTexture ->
                     camera.setPreviewTexture(surfaceTexture)
-                    mp4Recorder.setCamera(camera)
+                    mp4Recorder.setCamera(camera, cameraID)
                     mp4Recorder.prepare()
                     camera.startPreview()
                     previewStarted = true
@@ -423,6 +423,7 @@ class CameraRecordActivity : AppCompatActivity() {
             matrix.postTranslate(-(scaledWidth - viewWidth) / 2f, 0f)
         }
 //
+        Log.i(TAG, "displayRotation: $rotation")
         if (Surface.ROTATION_180 == rotation) {
             matrix.postRotate(180f, viewWidth / 2f, viewHeight / 2f)
         } else if (Surface.ROTATION_90 == rotation || Surface.ROTATION_270 == rotation) {
